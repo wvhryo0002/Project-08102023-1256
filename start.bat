@@ -11,27 +11,17 @@ set "python_path=C:\Python27\Scripts"
 :: Step 1: Download Blender
 echo Downloading Blender %blender_version%...
 curl -o blender.zip %blender_url%
-if %errorlevel% neq 0 (
-    echo Error downloading Blender.
-    exit /b 1
-)
 
 :: Step 2: Install Blender
 echo Installing Blender %blender_version%...
 mkdir "%blender_dir%"
-powershell -command "Expand-Archive -Path '.\blender.zip' -DestinationPath '%blender_dir%'"
-if %errorlevel% neq 0 (
-    echo Error installing Blender.
-    exit /b 1
-)
+"C:\Program Files\7-Zip\7z.exe" x "blender.zip" -o"%blender_dir%"
+:: msiexec /i "blender.zip" /qn /norestart
+:: powershell -command "Expand-Archive -Path '.\blender.zip' -DestinationPath '%blender_dir%'"
 
 :: Step 3: Install gdown
 echo Installing gdown using pip...
 pip install gdown
-if %errorlevel% neq 0 (
-    echo Error installing gdown.
-    exit /b 1
-)
 
 :: Define the Google Drive file URL and destination folder
 set "google_drive_url=https://drive.google.com/uc?id=1annnYF8aM2lB1-jNJourh86vSY2-MGXP"
