@@ -10,13 +10,16 @@ set "python_path=C:\Python27\Scripts"
 
 :: Step 1: Download Blender
 echo Downloading Blender %blender_version%...
-curl -o blender.zip %blender_url%
+set "url=https://www.blender.org/download/release/Blender3.6/blender-3.6.4-windows-x64.msi"
+set "output=blender-3.6.4-windows-x64.msi"
+curl -o "%output%" "%url%"
+:: curl -o blender.zip %blender_url%
 
 :: Step 2: Install Blender
 echo Installing Blender %blender_version%...
 mkdir "%blender_dir%"
-"C:\Program Files\7-Zip\7z.exe" x "blender.zip" -o"%blender_dir%"
-:: msiexec /i "blender.zip" /qn /norestart
+:: "C:\Program Files\7-Zip\7z.exe" x "blender.zip" -o"%blender_dir%"
+msiexec /i "%output%" /qn /norestart
 :: powershell -command "Expand-Archive -Path '.\blender.zip' -DestinationPath '%blender_dir%'"
 
 :: Step 3: Install gdown
@@ -25,7 +28,7 @@ pip install gdown
 
 :: Define the Google Drive file URL and destination folder
 set "google_drive_url=https://drive.google.com/uc?id=1annnYF8aM2lB1-jNJourh86vSY2-MGXP"
-set "destination_folder=C:\Program Files\Blender Foundation\Blender 3.6.4"
+set "destination_folder=C:\Program Files\Blender Foundation\Blender 3.6"
 
 :: Step 1: Download the file from Google Drive using gdown
 echo Downloading file from Google Drive...
