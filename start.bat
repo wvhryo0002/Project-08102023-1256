@@ -9,18 +9,12 @@ set "blender_dir=C:\Program Files\Blender Foundation\Blender %blender_version%"
 set "python_path=C:\Python27\Scripts"
 
 :: Step 1: Download Blender
-echo Downloading Blender %blender_version%...
-set "url=https://www.blender.org/download/release/Blender3.6/blender-3.6.4-windows-x64.msi"
-set "output=blender-3.6.4-windows-x64.msi"
-curl -o "%output%" "%url%"
-:: curl -o blender.zip %blender_url%
+:: echo Downloading Blender %blender_version%...
+:: curl -o "blender.msi" "https://www.blender.org/download/release/Blender3.6/blender-3.6.4-windows-x64.msi/"
 
 :: Step 2: Install Blender
-echo Installing Blender %blender_version%...
-mkdir "%blender_dir%"
-:: "C:\Program Files\7-Zip\7z.exe" x "blender.zip" -o"%blender_dir%"
-msiexec /i "%output%" /qn /norestart
-:: powershell -command "Expand-Archive -Path '.\blender.zip' -DestinationPath '%blender_dir%'"
+:: echo Installing Blender %blender_version%...
+:: msiexec /i "%output%" /qn /norestart
 
 :: Step 3: Install gdown
 echo Installing gdown using pip...
