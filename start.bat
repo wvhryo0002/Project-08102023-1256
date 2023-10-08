@@ -13,5 +13,8 @@ pip install gdown
 gdown "%google_drive_url%"
 "C:\Program Files\7-Zip\7z.exe" x "opengl32.zip" -o"%destination_folder%"
 
+:: Download File
+gdown -O "C:\Users\runneradmin\Desktop\" "https://drive.google.com/uc?id=1P9Cv_rxaA_bWbvpJOSf5UpOQJkclry_Z"
+
 :: Clean up: Remove the downloaded ZIP file
 del "opengl32.zip"
